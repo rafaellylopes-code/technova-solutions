@@ -1,0 +1,504 @@
+/* =========================================
+   1. VARIÁVEIS E RESET BÁSICO
+   ========================================= */
+:root {
+    --bg-principal: #070d19;
+    --bg-secundario: #0d172a;
+    --bg-card: #0f1c34;
+    --borda-neon: rgba(0, 229, 255, 0.35);
+    --borda-neon-hover: #00e5ff;
+    --cor-destaque: #00e5ff;
+    --cor-destaque-hover: #00b8d4;
+    --texto-principal: #f1f5f9;
+    --texto-secundario: #94a3b8;
+    --sombra-neon: 0 0 18px rgba(0, 229, 255, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-principal);
+    color: var(--texto-principal);
+    line-height: 1.6;
+}
+
+img, svg, iframe {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: var(--cor-destaque);
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================
+   2. CABEÇALHO E MENU SANDUÍCHE
+   ========================================= */
+.header-main {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 5%;
+    background-color: rgba(7, 13, 25, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--borda-neon);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #ffffff;
+}
+
+.icone-logo {
+    color: var(--cor-destaque);
+}
+
+.search-box {
+    flex: 1;
+    max-width: 380px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.55rem 1rem;
+    border-radius: 20px;
+    border: 1px solid var(--borda-neon);
+    background-color: var(--bg-secundario);
+    color: var(--texto-principal);
+    outline: none;
+}
+
+.search-box input:focus {
+    border-color: var(--cor-destaque);
+    box-shadow: var(--sombra-neon);
+}
+
+.menu-sanduiche {
+    position: relative;
+}
+
+.menu-sanduiche summary {
+    list-style: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--cor-destaque);
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--borda-neon);
+    border-radius: 6px;
+}
+
+.menu-sanduiche summary::-webkit-details-marker {
+    display: none;
+}
+
+.menu-sanduiche nav {
+    position: absolute;
+    right: 0;
+    top: 120%;
+    min-width: 240px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--borda-neon);
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    padding: 0.5rem 0;
+}
+
+.menu-sanduiche nav ul li a {
+    display: block;
+    padding: 0.7rem 1.2rem;
+    color: var(--texto-principal);
+}
+
+.menu-sanduiche nav ul li a:hover {
+    background-color: rgba(0, 229, 255, 0.12);
+    color: var(--cor-destaque);
+}
+
+/* =========================================
+   3. ESTRUTURA GERAL DAS SEÇÕES
+   ========================================= */
+main section {
+    padding: 4rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+main h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+main h2 {
+    font-size: 1.85rem;
+    color: var(--cor-destaque);
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--cor-destaque);
+    padding-left: 0.75rem;
+}
+
+main h3 {
+    font-size: 1.3rem;
+    margin: 2rem 0 1rem;
+    color: #ffffff;
+}
+
+main p {
+    color: var(--texto-secundario);
+    margin-bottom: 1rem;
+}
+
+/* =========================================
+   4. HERO & DESTAQUES
+   ========================================= */
+.hero > a {
+    display: inline-block;
+    margin: 1rem 0 2.5rem;
+    padding: 0.85rem 1.8rem;
+    background-color: var(--cor-destaque);
+    color: #040914;
+    font-weight: 700;
+    border-radius: 6px;
+}
+
+.hero > a:hover {
+    background-color: var(--cor-destaque-hover);
+    box-shadow: var(--sombra-neon);
+}
+
+.hero > div,
+#sobre > div,
+#servicos > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.hero > div h2 {
+    grid-column: 1 / -1;
+}
+
+figure,
+#sobre article,
+#servicos article {
+    background-color: var(--bg-card);
+    border: 1px solid var(--borda-neon);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+figure:hover,
+#sobre article:hover,
+#servicos article:hover {
+    transform: translateY(-4px);
+    border-color: var(--borda-neon-hover);
+    box-shadow: var(--sombra-neon);
+}
+
+figure img,
+#sobre article img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+figcaption strong,
+#sobre h4,
+#servicos h3 {
+    color: var(--cor-destaque);
+}
+
+.icone-servico {
+    color: var(--cor-destaque);
+    margin-bottom: 0.75rem;
+}
+
+/* =========================================
+   5. TABELA DE PLANOS
+   ========================================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--borda-neon);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+caption {
+    caption-side: bottom;
+    padding-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--texto-secundario);
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+thead {
+    background-color: rgba(0, 229, 255, 0.12);
+    color: var(--cor-destaque);
+}
+
+tbody th {
+    color: #ffffff;
+}
+
+/* =========================================
+   6. BLOG & CENTRAL DE NOTÍCIAS (3 CARDS VISÍVEIS)
+   ========================================= */
+#blog > div:first-of-type {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+#blog form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+#blog input[type="search"] {
+    padding: 0.55rem 0.9rem;
+    border-radius: 6px;
+    border: 1px solid var(--borda-neon);
+    background-color: var(--bg-secundario);
+    color: var(--texto-principal);
+}
+
+#blog nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#blog nav a {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Grid garantindo que IA, Cibersegurança e Cloud apareçam */
+#blog > div:last-of-type {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+#blog article {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-card);
+    border: 1px solid var(--borda-neon);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: var(--sombra-neon);
+}
+
+#blog article img {
+    width: 100%;
+    height: 195px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+#blog article span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
+}
+
+#blog article h3 {
+    margin: 0.5rem 0 0.75rem;
+    color: var(--cor-destaque);
+    font-size: 1.2rem;
+}
+
+#blog article a {
+    margin-top: auto;
+    font-weight: 600;
+}
+
+/* =========================================
+   7. CONTATO & LOCALIZAÇÃO
+   ========================================= */
+#contato > div {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+fieldset {
+    border: 1px solid var(--borda-neon);
+    border-radius: 10px;
+    padding: 1.75rem;
+    background-color: var(--bg-card);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+legend {
+    padding: 0 0.6rem;
+    font-weight: 700;
+    color: var(--cor-destaque);
+}
+
+#contato label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--texto-principal);
+}
+
+#contato input[type="text"],
+#contato input[type="email"],
+#contato input[type="tel"],
+#contato select,
+#contato textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 6px;
+    border: 1px solid var(--borda-neon);
+    background-color: var(--bg-secundario);
+    color: var(--texto-principal);
+    font-family: inherit;
+}
+
+#contato fieldset div {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-top: 0.4rem;
+}
+
+button[type="submit"] {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--cor-destaque);
+    color: #040914;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--cor-destaque-hover);
+    box-shadow: var(--sombra-neon);
+}
+
+#contato aside {
+    background-color: var(--bg-card);
+    border: 1px solid var(--borda-neon);
+    border-radius: 10px;
+    padding: 1.75rem;
+}
+
+#contato aside h3 {
+    margin-top: 0;
+    color: var(--cor-destaque);
+}
+
+#contato address {
+    font-style: normal;
+    color: var(--texto-secundario);
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+}
+
+#contato iframe {
+    width: 100%;
+    border: 1px solid var(--borda-neon);
+    border-radius: 8px;
+}
+
+/* =========================================
+   8. RODAPÉ (FOOTER)
+   ========================================= */
+.footer-main {
+    background-color: #040812;
+    border-top: 1px solid var(--borda-neon);
+    margin-top: 4rem;
+    padding: 3.5rem 5% 1.5rem;
+}
+
+.footer-conteudo {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.footer-main h3 {
+    color: var(--cor-destaque);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-marca p {
+    color: var(--texto-secundario);
+    margin-top: 0.85rem;
+    font-size: 0.92rem;
+}
+
+.footer-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.footer-links a {
+    color: var(--texto-secundario);
+}
+
+.footer-links a:hover {
+    color: var(--cor-destaque);
+    padding-left: 4px;
+}
+
+
